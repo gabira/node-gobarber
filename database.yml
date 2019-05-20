@@ -1,0 +1,11 @@
+postgres:
+  image: postgres:11-alpine
+  ports:
+    - "5432:5432"
+  environment:
+    POSTGRES_USER: "gabriel"
+    POSTGRES_PASSWORD: "12345"
+    POSTGRES_DB: "gonodemodulo2"
+  volumes:
+    - ./init:/docker-entrypoint-initdb.d/
+# sudo docker-compose -f database.yml up

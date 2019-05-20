@@ -1,0 +1,24 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+	<div class="content">
+		<strong>Olá {{ user.name }}, esta é sua agenda de hoje</strong>
+
+		{% if schedule.length %}
+		<ul class="providers">
+			{% for s in schedule %}
+			<li class="provider{% if s.isPast %} is-past{% endif %}">
+				<div>
+					<img src="/files/{{s.customer.avatar}}">
+					<strong>{{s.customer.name}}<br><time>{{ s.date }}</time></strong>
+				</div>
+			</li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		<p>Ainda nenhum</p>
+		{% endif %}
+
+		<a href="/app/logout" class="logout">Sair</a>
+	</div>
+{% endblock %}
